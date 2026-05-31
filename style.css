@@ -764,7 +764,9 @@ h3 {
   }
 
   .logo {
-  height: 52px;
+  height: 50px;
   width: auto;
+  max-width: 220px;
+  object-fit: contain;
   display: block;
 }
