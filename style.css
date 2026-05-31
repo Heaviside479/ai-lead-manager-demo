@@ -762,4 +762,9 @@ h3 {
   .score-example strong {
     font-size: 3.2rem;
   }
+
+  .logo {
+  height: 52px;
+  width: auto;
+  display: block;
 }
