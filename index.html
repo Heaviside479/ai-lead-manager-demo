@@ -1,1 +1,407 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>KI Lead Manager | Vertriebsdashboard Demo</title>
+
+  <meta
+    name="description"
+    content="KI Lead Manager ist ein modernes Vertriebsdashboard zur Verwaltung, Bewertung und Priorisierung von Leads."
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="app-header">
+    <a href="index.html" class="brand">
+      <span class="brand-icon">📊</span>
+      KI Lead Manager
+    </a>
+
+    <button class="menu-toggle" aria-label="Navigation öffnen">
+      ☰
+    </button>
+
+    <nav class="nav-links">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#leads">Leads</a>
+      <a href="#features">Funktionen</a>
+      <a href="#value">Nutzen</a>
+      <a href="#contact" class="nav-cta">Heaviside Solutions</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero" id="dashboard">
+      <div class="hero-content">
+        <p class="eyebrow">Business Software Demo</p>
+
+        <h1>Leads verwalten, bewerten und schneller in Kunden verwandeln</h1>
+
+        <p class="hero-text">
+          Der KI Lead Manager ist eine interaktive Demo-Anwendung für modernes
+          Lead Management. Unternehmen können Interessenten erfassen, priorisieren,
+          bewerten und ihren Vertriebsprozess übersichtlich steuern.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#leads" class="btn primary">Lead hinzufügen</a>
+          <a href="#features" class="btn secondary">Funktionen ansehen</a>
+        </div>
+
+        <div class="trust-row">
+          <span>Lead Management</span>
+          <span>Vertriebsdashboard</span>
+          <span>KI-Scoring Demo</span>
+        </div>
+      </div>
+
+      <div class="dashboard-preview">
+        <div class="preview-header">
+          <div>
+            <span class="status-dot"></span>
+            Live Dashboard
+          </div>
+          <span class="preview-badge">Demo</span>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <span>Gesamte Leads</span>
+            <strong id="totalLeads">0</strong>
+            <small>Alle erfassten Kontakte</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Aktive Leads</span>
+            <strong id="activeLeads">0</strong>
+            <small>Noch offene Chancen</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Gewonnen</span>
+            <strong id="wonLeads">0</strong>
+            <small>Erfolgreiche Abschlüsse</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Umsatzpotenzial</span>
+            <strong id="revenuePotential">0 €</strong>
+            <small>Geschätzter Gesamtwert</small>
+          </div>
+        </div>
+
+        <div class="pipeline-preview">
+          <div>
+            <span>Neu</span>
+            <strong id="pipelineNew">0</strong>
+          </div>
+
+          <div>
+            <span>Kontakt</span>
+            <strong id="pipelineContacted">0</strong>
+          </div>
+
+          <div>
+            <span>Angebot</span>
+            <strong id="pipelineOffer">0</strong>
+          </div>
+
+          <div>
+            <span>Gewonnen</span>
+            <strong id="pipelineWon">0</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div>
+        <strong>100%</strong>
+        <span>Browserbasierte Demo</span>
+      </div>
+
+      <div>
+        <strong>6</strong>
+        <span>Lead-Status Optionen</span>
+      </div>
+
+      <div>
+        <strong>KI</strong>
+        <span>Lead-Score Logik</span>
+      </div>
+    </section>
+
+    <section class="section" id="leads">
+      <div class="section-heading center">
+        <p class="eyebrow">Lead Management</p>
+        <h2>Neuen Lead erfassen</h2>
+        <p>
+          Fügen Sie Interessenten hinzu und lassen Sie automatisch einen Lead-Score,
+          eine Priorität und ein geschätztes Umsatzpotenzial berechnen.
+        </p>
+      </div>
+
+      <div class="lead-layout">
+        <form class="lead-form" id="leadForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="leadName">Name</label>
+              <input type="text" id="leadName" placeholder="Max Mustermann" required />
+            </div>
+
+            <div class="form-group">
+              <label for="companyName">Unternehmen</label>
+              <input type="text" id="companyName" placeholder="Muster GmbH" required />
+            </div>
+
+            <div class="form-group">
+              <label for="leadEmail">E-Mail</label>
+              <input type="email" id="leadEmail" placeholder="kontakt@unternehmen.de" required />
+            </div>
+
+            <div class="form-group">
+              <label for="leadPhone">Telefon</label>
+              <input type="tel" id="leadPhone" placeholder="+49 123 456789" />
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Budget</label>
+              <select id="budget" required>
+                <option value="">Budget auswählen</option>
+                <option value="500">bis 500 €</option>
+                <option value="1500">500 € – 1.500 €</option>
+                <option value="3000">1.500 € – 3.000 €</option>
+                <option value="7500">3.000 € – 7.500 €</option>
+                <option value="15000">über 7.500 €</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="interest">Interesse</label>
+              <select id="interest" required>
+                <option value="">Interesse auswählen</option>
+                <option value="website">Website</option>
+                <option value="automation">KI & Automatisierung</option>
+                <option value="software">Softwareentwicklung</option>
+                <option value="consulting">IT-Beratung</option>
+                <option value="support">Hosting & Support</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="priority">Priorität</label>
+              <select id="priority" required>
+                <option value="">Priorität auswählen</option>
+                <option value="hoch">Hoch</option>
+                <option value="mittel">Mittel</option>
+                <option value="niedrig">Niedrig</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select id="status" required>
+                <option value="neu">Neu</option>
+                <option value="kontaktiert">Kontaktiert</option>
+                <option value="angebot">Angebot gesendet</option>
+                <option value="verhandlung">In Verhandlung</option>
+                <option value="gewonnen">Gewonnen</option>
+                <option value="verloren">Verloren</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notizen</label>
+            <textarea id="notes" placeholder="Kurze Notiz zum Lead oder Projektwunsch"></textarea>
+          </div>
+
+          <button type="submit" class="btn primary">
+            Lead speichern
+          </button>
+        </form>
+
+        <div class="lead-insights">
+          <p class="eyebrow">KI Lead Score</p>
+          <h3>Automatische Bewertung</h3>
+
+          <p>
+            Jeder Lead erhält automatisch einen Score basierend auf Budget,
+            Priorität, Interesse und Status. Dadurch wird sichtbar, welche
+            Kontakte besonders wertvoll sind.
+          </p>
+
+          <div class="score-example">
+            <div>
+              <strong>87</strong>
+              <span>/100</span>
+            </div>
+            <p>Hohe Abschlusswahrscheinlichkeit</p>
+          </div>
+
+          <ul class="check-list">
+            <li>Priorisierte Interessenten</li>
+            <li>Geschätztes Umsatzpotenzial</li>
+            <li>Automatische Vertriebsübersicht</li>
+            <li>Live aktualisierte Kennzahlen</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-heading">
+        <p class="eyebrow">Lead Übersicht</p>
+        <h2>Aktuelle Leads</h2>
+        <p>
+          Alle hinzugefügten Leads erscheinen automatisch in der Tabelle. Status,
+          Priorität und Score helfen bei der schnellen Bewertung.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="lead-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Unternehmen</th>
+              <th>Interesse</th>
+              <th>Budget</th>
+              <th>Status</th>
+              <th>Priorität</th>
+              <th>Score</th>
+              <th>Aktion</th>
+            </tr>
+          </thead>
+
+          <tbody id="leadTableBody">
+            <tr class="empty-row">
+              <td colspan="8">Noch keine Leads vorhanden. Fügen Sie den ersten Lead hinzu.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading center">
+        <p class="eyebrow">Funktionen</p>
+        <h2>Was diese Demo zeigt</h2>
+        <p>
+          Dieses Projekt demonstriert moderne Frontend-Logik, interaktive
+          Datenverarbeitung und ein professionelles Software-Interface.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span>👥</span>
+          <h3>Lead-Verwaltung</h3>
+          <p>
+            Neue Leads können direkt im Browser erstellt, bewertet und in der Tabelle angezeigt werden.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>⭐</span>
+          <h3>KI-Scoring Logik</h3>
+          <p>
+            Die Anwendung berechnet automatisch einen Lead-Score basierend auf mehreren Faktoren.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>📊</span>
+          <h3>Live Dashboard</h3>
+          <p>
+            Kennzahlen wie Leads, aktive Chancen und Umsatzpotenzial aktualisieren sich automatisch.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>💼</span>
+          <h3>Business Software UI</h3>
+          <p>
+            Das Design orientiert sich an modernen SaaS- und CRM-Dashboards.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark" id="value">
+      <div class="section-heading center">
+        <p class="eyebrow">Geschäftlicher Nutzen</p>
+        <h2>Warum Lead Management wichtig ist</h2>
+      </div>
+
+      <div class="value-grid">
+        <article class="value-card">
+          <strong>01</strong>
+          <h3>Bessere Übersicht</h3>
+          <p>
+            Unternehmen sehen sofort, welche Interessenten offen, wichtig oder bereits gewonnen sind.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <strong>02</strong>
+          <h3>Höhere Abschlusschancen</h3>
+          <p>
+            Priorisierte Leads helfen dabei, wertvolle Kontakte schneller zu bearbeiten.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <strong>03</strong>
+          <h3>Mehr Struktur im Vertrieb</h3>
+          <p>
+            Status, Score und Budget machen den Vertriebsprozess messbarer und planbarer.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div>
+        <p class="eyebrow">Portfolio-Projekt</p>
+        <h2>Entwickelt von Heaviside Solutions</h2>
+        <p>
+          Dieses Projekt zeigt, wie moderne Business-Software mit HTML, CSS und JavaScript
+          umgesetzt werden kann – inklusive Dashboard, Formularlogik, Tabellenansicht und
+          automatischer Lead-Bewertung.
+        </p>
+      </div>
+
+      <a
+        href="https://heaviside-solutions.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn primary"
+      >
+        Heaviside Solutions besuchen
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>
+      <strong>KI Lead Manager</strong>
+      <p>Lead Management & Vertriebsdashboard Demo</p>
+    </div>
+
+    <div>
+      <p>Erstellt von Christopher Heaviside</p>
+      <p>Heaviside Solutions</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
