@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const STORAGE_KEY = "heaviside_ai_lead_manager_leads";
+
   const menuToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
 
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const isOpen = navLinks.classList.contains("open");
       menuToggle.textContent = isOpen ? "✕" : "☰";
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
     document.querySelectorAll(".nav-links a").forEach((link) => {
@@ -33,19 +35,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const pipelineOffer = document.getElementById("pipelineOffer");
   const pipelineWon = document.getElementById("pipelineWon");
 
-  let leads = [
+  const demoLeads = [
     {
       id: 1,
       name: "Anna Berger",
       company: "Berger Immobilien",
       email: "anna@berger-immobilien.de",
       phone: "+49 30 123456",
-      budget: 7500,
+      budget: 9500,
       interest: "automation",
       priority: "hoch",
       status: "angebot",
-      score: 92,
-      notes: "Interessiert an automatisierter Lead-Bearbeitung."
+      notes: "Möchte Kontaktformular-Anfragen automatisch bewerten und priorisieren."
     },
     {
       id: 2,
@@ -53,12 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
       company: "Weber Consulting",
       email: "kontakt@weber-consulting.de",
       phone: "+49 40 987654",
-      budget: 3000,
+      budget: 4200,
       interest: "website",
       priority: "mittel",
       status: "kontaktiert",
-      score: 74,
-      notes: "Benötigt neue Business Website."
+      notes: "Benötigt eine moderne Website mit klarer Lead-Struktur."
     },
     {
       id: 3,
@@ -66,12 +66,23 @@ document.addEventListener("DOMContentLoaded", () => {
       company: "Schmidt Bau GmbH",
       email: "info@schmidtbau.de",
       phone: "+49 89 555555",
-      budget: 15000,
+      budget: 18000,
       interest: "software",
       priority: "hoch",
       status: "gewonnen",
-      score: 96,
-      notes: "Interesse an internem Projekt-Dashboard."
+      notes: "Interesse an internem Dashboard für Projekt- und Kundenanfragen."
+    },
+    {
+      id: 4,
+      name: "David Keller",
+      company: "Keller Digital",
+      email: "david@keller-digital.de",
+      phone: "+49 221 445566",
+      budget: 6800,
+      interest: "consulting",
+      priority: "mittel",
+      status: "neu",
+      notes: "Sucht Beratung zur Digitalisierung des Vertriebsprozesses."
     }
   ];
 
@@ -92,32 +103,87 @@ document.addEventListener("DOMContentLoaded", () => {
     support: "Hosting & Support"
   };
 
+  const priorityLabels = {
+    niedrig: "Niedrig",
+    mittel: "Mittel",
+    hoch: "Hoch"
+  };
+
+  function escapeHTML(value) {
+    return String(value || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
   function calculateLeadScore(budget, priority, interest, status) {
-    let score = 35;
+    let score = 30;
 
-    if (budget >= 15000) score += 30;
-    else if (budget >= 7500) score += 24;
+    if (budget >= 15000) score += 32;
+    else if (budget >= 7500) score += 25;
     else if (budget >= 3000) score += 18;
-    else if (budget >= 1500) score += 12;
-    else score += 6;
+    else if (budget >= 1500) score += 10;
+    else score += 5;
 
-    if (priority === "hoch") score += 22;
-    if (priority === "mittel") score += 14;
-    if (priority === "niedrig") score += 6;
+    if (priority === "hoch") score += 24;
+    else if (priority === "mittel") score += 14;
+    else if (priority === "niedrig") score += 6;
 
-    if (interest === "software") score += 14;
-    if (interest === "automation") score += 13;
-    if (interest === "website") score += 10;
-    if (interest === "consulting") score += 9;
-    if (interest === "support") score += 7;
+    if (interest === "software") score += 16;
+    else if (interest === "automation") score += 15;
+    else if (interest === "website") score += 11;
+    else if (interest === "consulting") score += 9;
+    else if (interest === "support") score += 7;
 
     if (status === "gewonnen") score += 12;
-    if (status === "verhandlung") score += 10;
-    if (status === "angebot") score += 8;
-    if (status === "kontaktiert") score += 5;
-    if (status === "verloren") score -= 18;
+    else if (status === "verhandlung") score += 10;
+    else if (status === "angebot") score += 8;
+    else if (status === "kontaktiert") score += 5;
+    else if (status === "verloren") score -= 22;
 
-    return Math.max(0, Math.min(score, 100));
+    return Math.max(0, Math.min(Math.round(score), 100));
+  }
+
+  function normalizeLead(lead) {
+    return {
+      ...lead,
+      budget: Number(lead.budget) || 0,
+      score: calculateLeadScore(
+        Number(lead.budget) || 0,
+        lead.priority,
+        lead.interest,
+        lead.status
+      )
+    };
+  }
+
+  function loadLeads() {
+    try {
+      const savedLeads = localStorage.getItem(STORAGE_KEY);
+
+      if (!savedLeads) {
+        return demoLeads.map(normalizeLead);
+      }
+
+      const parsedLeads = JSON.parse(savedLeads);
+
+      if (!Array.isArray(parsedLeads)) {
+        return demoLeads.map(normalizeLead);
+      }
+
+      return parsedLeads.map(normalizeLead);
+    } catch (error) {
+      console.warn("Lead data could not be loaded. Demo data is used instead.");
+      return demoLeads.map(normalizeLead);
+    }
+  }
+
+  let leads = loadLeads();
+
+  function saveLeads() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
   }
 
   function formatCurrency(value) {
@@ -125,11 +191,24 @@ document.addEventListener("DOMContentLoaded", () => {
       style: "currency",
       currency: "EUR",
       maximumFractionDigits: 0
-    }).format(value);
+    }).format(Number(value) || 0);
   }
 
   function getActiveLeadsCount() {
-    return leads.filter((lead) => lead.status !== "gewonnen" && lead.status !== "verloren").length;
+    return leads.filter(
+      (lead) => lead.status !== "gewonnen" && lead.status !== "verloren"
+    ).length;
+  }
+
+  function getScoreLabel(score) {
+    if (score >= 85) return "Sehr heiß";
+    if (score >= 70) return "Interessant";
+    if (score >= 50) return "Prüfen";
+    return "Niedrig";
+  }
+
+  function updateText(element, value) {
+    if (element) element.textContent = value;
   }
 
   function updateDashboard() {
@@ -138,20 +217,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const won = leads.filter((lead) => lead.status === "gewonnen").length;
     const revenue = leads
       .filter((lead) => lead.status !== "verloren")
-      .reduce((sum, lead) => sum + Number(lead.budget), 0);
+      .reduce((sum, lead) => sum + Number(lead.budget || 0), 0);
 
-    totalLeads.textContent = total;
-    activeLeads.textContent = active;
-    wonLeads.textContent = won;
-    revenuePotential.textContent = formatCurrency(revenue);
+    updateText(totalLeads, total);
+    updateText(activeLeads, active);
+    updateText(wonLeads, won);
+    updateText(revenuePotential, formatCurrency(revenue));
 
-    pipelineNew.textContent = leads.filter((lead) => lead.status === "neu").length;
-    pipelineContacted.textContent = leads.filter((lead) => lead.status === "kontaktiert").length;
-    pipelineOffer.textContent = leads.filter((lead) => lead.status === "angebot").length;
-    pipelineWon.textContent = won;
+    updateText(pipelineNew, leads.filter((lead) => lead.status === "neu").length);
+    updateText(
+      pipelineContacted,
+      leads.filter((lead) => lead.status === "kontaktiert").length
+    );
+    updateText(
+      pipelineOffer,
+      leads.filter((lead) => lead.status === "angebot").length
+    );
+    updateText(pipelineWon, won);
+  }
+
+  function getStatusOptions(currentStatus) {
+    return Object.entries(statusLabels)
+      .map(([value, label]) => {
+        const selected = value === currentStatus ? "selected" : "";
+        return `<option value="${value}" ${selected}>${label}</option>`;
+      })
+      .join("");
   }
 
   function renderLeads() {
+    if (!leadTableBody) {
+      updateDashboard();
+      return;
+    }
+
     leadTableBody.innerHTML = "";
 
     if (leads.length === 0) {
@@ -161,6 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </tr>
       `;
       updateDashboard();
+      saveLeads();
       return;
     }
 
@@ -171,25 +271,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
       row.innerHTML = `
         <td>
-          <strong>${lead.name}</strong><br>
-          <small>${lead.email}</small>
+          <strong>${escapeHTML(lead.name)}</strong><br>
+          <small>${escapeHTML(lead.email)}</small>
         </td>
-        <td>${lead.company}</td>
-        <td>${interestLabels[lead.interest] || lead.interest}</td>
-        <td>${formatCurrency(Number(lead.budget))}</td>
+
         <td>
-          <span class="status-badge status-${lead.status}">
-            ${statusLabels[lead.status] || lead.status}
+          <strong>${escapeHTML(lead.company)}</strong><br>
+          <small>${escapeHTML(lead.phone || "Keine Telefonnummer")}</small>
+        </td>
+
+        <td>${escapeHTML(interestLabels[lead.interest] || lead.interest)}</td>
+
+        <td>${formatCurrency(lead.budget)}</td>
+
+        <td>
+          <select class="status-select status-${escapeHTML(lead.status)}" data-id="${lead.id}">
+            ${getStatusOptions(lead.status)}
+          </select>
+        </td>
+
+        <td>
+          <span class="priority-badge priority-${escapeHTML(lead.priority)}">
+            ${escapeHTML(priorityLabels[lead.priority] || lead.priority)}
           </span>
         </td>
+
         <td>
-          <span class="priority-badge priority-${lead.priority}">
-            ${lead.priority}
+          <span class="score-badge">
+            ${lead.score}/100
           </span>
+          <br>
+          <small>${getScoreLabel(lead.score)}</small>
         </td>
-        <td>
-          <span class="score-badge">${lead.score}/100</span>
-        </td>
+
         <td>
           <button class="delete-btn" data-id="${lead.id}">
             Löschen
@@ -204,35 +318,61 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener("click", () => {
         const id = Number(button.getAttribute("data-id"));
         leads = leads.filter((lead) => lead.id !== id);
+        saveLeads();
+        renderLeads();
+      });
+    });
+
+    document.querySelectorAll(".status-select").forEach((select) => {
+      select.addEventListener("change", () => {
+        const id = Number(select.getAttribute("data-id"));
+        const lead = leads.find((item) => item.id === id);
+
+        if (!lead) return;
+
+        lead.status = select.value;
+        lead.score = calculateLeadScore(
+          lead.budget,
+          lead.priority,
+          lead.interest,
+          lead.status
+        );
+
+        saveLeads();
         renderLeads();
       });
     });
 
     updateDashboard();
+    saveLeads();
+  }
+
+  function resetToDemoData() {
+    leads = demoLeads.map(normalizeLead);
+    saveLeads();
+    renderLeads();
   }
 
   if (leadForm) {
     leadForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      const name = document.getElementById("leadName").value.trim();
-      const company = document.getElementById("companyName").value.trim();
-      const email = document.getElementById("leadEmail").value.trim();
-      const phone = document.getElementById("leadPhone").value.trim();
-      const budget = Number(document.getElementById("budget").value);
-      const interest = document.getElementById("interest").value;
-      const priority = document.getElementById("priority").value;
-      const status = document.getElementById("status").value;
-      const notes = document.getElementById("notes").value.trim();
+      const name = document.getElementById("leadName")?.value.trim();
+      const company = document.getElementById("companyName")?.value.trim();
+      const email = document.getElementById("leadEmail")?.value.trim();
+      const phone = document.getElementById("leadPhone")?.value.trim();
+      const budget = Number(document.getElementById("budget")?.value);
+      const interest = document.getElementById("interest")?.value;
+      const priority = document.getElementById("priority")?.value;
+      const status = document.getElementById("status")?.value;
+      const notes = document.getElementById("notes")?.value.trim();
 
       if (!name || !company || !email || !budget || !interest || !priority || !status) {
         alert("Bitte füllen Sie alle Pflichtfelder aus.");
         return;
       }
 
-      const score = calculateLeadScore(budget, priority, interest, status);
-
-      const newLead = {
+      const newLead = normalizeLead({
         id: Date.now(),
         name,
         company,
@@ -242,15 +382,16 @@ document.addEventListener("DOMContentLoaded", () => {
         interest,
         priority,
         status,
-        score,
         notes
-      };
+      });
 
       leads.push(newLead);
+      saveLeads();
       renderLeads();
       leadForm.reset();
 
-      const tableSection = document.querySelector(".lead-table");
+      const tableSection = document.querySelector(".lead-table, .table-wrapper");
+
       if (tableSection) {
         tableSection.scrollIntoView({
           behavior: "smooth",
@@ -258,6 +399,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     });
+  }
+
+  const resetButton = document.getElementById("resetDemoData");
+
+  if (resetButton) {
+    resetButton.addEventListener("click", resetToDemoData);
   }
 
   const animatedElements = document.querySelectorAll(
@@ -300,4 +447,3 @@ document.addEventListener("DOMContentLoaded", () => {
     "color:#94a3b8;font-size:14px;"
   );
 });
-
