@@ -1,32 +1,30 @@
 # 📊 KI Lead Manager
 
-Ein modernes Vertriebsdashboard zur Verwaltung, Priorisierung und Bewertung von Leads.
+Ein modernes, interaktives Vertriebsdashboard zur Verwaltung, Bewertung und Priorisierung von Leads.
 
-Der **KI Lead Manager** ist eine interaktive Business-Software-Demo, die zeigt, wie Unternehmen Interessenten erfassen, analysieren und ihren Vertriebsprozess strukturieren können.
-
-Dieses Projekt wurde als Portfolio-Projekt entwickelt, um moderne Frontend-Entwicklung, Dashboard-Design und datenbasierte Benutzeroberflächen zu demonstrieren.
+Der **KI Lead Manager** ist eine browserbasierte Business-Software-Demo von **Heaviside Solutions**. Das Projekt zeigt, wie Unternehmen neue Interessenten strukturiert erfassen, automatisch bewerten und ihre Vertriebschancen übersichtlich steuern können.
 
 ---
 
 ## 🚀 Live Demo
 
-Hier testen:
-
-**https://heaviside479.github.io/ai-lead-manager-demo/**
+👉 **Demo testen:**  
+https://heaviside479.github.io/ai-lead-manager-demo/
 
 ---
 
 ## 🎯 Projektziel
 
-Viele Unternehmen verlieren potenzielle Kunden durch unstrukturierte Prozesse und fehlende Übersicht.
+Viele Unternehmen verlieren potenzielle Kunden, weil Anfragen unstrukturiert eingehen, wichtige Leads nicht priorisiert werden und ein klarer Überblick über den Vertriebsprozess fehlt.
 
-Der KI Lead Manager demonstriert, wie ein modernes Lead-Management-System dabei helfen kann:
+Diese Demo zeigt, wie ein digitales Lead-Management-System dabei helfen kann:
 
-* Interessenten zentral zu erfassen
-* Verkaufschancen zu priorisieren
-* Umsatzpotenziale sichtbar zu machen
-* Vertriebsprozesse zu strukturieren
-* Kennzahlen in Echtzeit darzustellen
+- Leads zentral zu erfassen
+- Verkaufschancen automatisch zu bewerten
+- wichtige Interessenten schneller zu erkennen
+- Umsatzpotenziale sichtbar zu machen
+- Vertriebsprozesse strukturierter zu steuern
+- Kennzahlen live im Dashboard darzustellen
 
 ---
 
@@ -36,108 +34,95 @@ Der KI Lead Manager demonstriert, wie ein modernes Lead-Management-System dabei 
 
 Das Dashboard aktualisiert sich automatisch und zeigt:
 
-* Gesamte Leads
-* Aktive Leads
-* Gewonnene Kunden
-* Umsatzpotenzial
-* Vertriebs-Pipeline
-
----
+- gesamte Leads
+- aktive Leads
+- gewonnene Leads
+- geschätztes Umsatzpotenzial
+- Pipeline-Status
 
 ### 👥 Lead-Verwaltung
 
-Neue Leads können direkt hinzugefügt werden:
+Neue Leads können direkt über ein Formular hinzugefügt werden:
 
-* Name
-* Unternehmen
-* E-Mail
-* Telefon
-* Budget
-* Interesse
-* Priorität
-* Status
+- Name
+- Unternehmen
+- E-Mail
+- Telefon
+- Budget
+- Interesse
+- Priorität
+- Status
+- Notizen
 
----
+### ⭐ Automatischer Lead Score
 
-### ⭐ KI Lead Score
-
-Jeder Lead erhält automatisch einen Score zwischen 0 und 100.
+Jeder Lead erhält automatisch einen Score von **0 bis 100**.
 
 Die Bewertung basiert auf:
 
-* Budget
-* Priorität
-* Interesse
-* Lead-Status
+- Budget
+- Priorität
+- Interesse
+- Lead-Status
 
 Dadurch werden besonders wertvolle Kontakte sofort sichtbar.
 
----
+### 💾 Lokale Speicherung
 
-### 📈 Vertriebsübersicht
+Die Demo nutzt `localStorage`, damit hinzugefügte Leads, gelöschte Einträge und Statusänderungen auch nach dem Neuladen der Seite erhalten bleiben.
 
-Die Anwendung berechnet automatisch:
+### 🔄 Demo zurücksetzen
 
-* Lead-Anzahl
-* Offene Verkaufschancen
-* Gewonnene Leads
-* Potenziellen Umsatz
+Über den Reset-Button kann die Demo jederzeit wieder auf die vorbereiteten Beispiel-Leads zurückgesetzt werden.
 
----
+### 📱 Responsive Design
 
-### 🗑 Lead-Verwaltung
+Die Anwendung ist für verschiedene Bildschirmgrößen optimiert:
 
-* Leads hinzufügen
-* Leads löschen
-* Dashboard automatisch aktualisieren
+- Desktop
+- Laptop
+- Tablet
+- Smartphone
 
 ---
 
-## 🛠 Verwendete Technologien
+## 🛠 Technologien
 
-* HTML5
-* CSS3
-* JavaScript (Vanilla JS)
-* Responsive Design
-* GitHub Pages
-
----
-
-## 📱 Responsive Design
-
-Die Anwendung wurde vollständig responsive entwickelt und funktioniert auf:
-
-* Desktop
-* Laptop
-* Tablet
-* Smartphone
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- localStorage
+- Responsive Design
+- GitHub Pages
 
 ---
 
-## 💼 Anwendungsbereiche
+## 💼 Mögliche Anwendungsbereiche
 
-Ein vergleichbares System könnte eingesetzt werden für:
+Ein vergleichbares System kann eingesetzt werden für:
 
-* Agenturen
-* IT-Dienstleister
-* Beratungsunternehmen
-* Immobilienunternehmen
-* Handwerksbetriebe
-* Vertriebsorganisationen
-* Startups
+- Agenturen
+- IT-Dienstleister
+- Beratungsunternehmen
+- Immobilienunternehmen
+- Handwerksbetriebe
+- Vertriebsorganisationen
+- Startups
+- lokale Dienstleister
 
 ---
 
 ## 🎨 Design-Fokus
 
-Das Interface orientiert sich an modernen SaaS- und CRM-Plattformen wie:
+Das Interface orientiert sich an modernen SaaS-, CRM- und Vertriebsplattformen.
 
-* HubSpot
-* Salesforce
-* Pipedrive
-* Monday.com
+Der Fokus liegt auf:
 
-Ziel war ein professionelles Dashboard mit klarer Benutzerführung und moderner Optik.
+- klarer Benutzerführung
+- professioneller Dashboard-Optik
+- verständlichen Kennzahlen
+- schneller Lead-Bewertung
+- moderner Business-Software-Ästhetik
 
 ---
 
@@ -155,26 +140,3 @@ ai-lead-manager-demo/
 │   └── logo.png
 │
 └── screenshots/
-```
-
----
-
-## 👨‍💻 Entwickler
-
-Christopher Heaviside
-
-Heaviside Solutions
-
-GitHub:
-https://github.com/Heaviside479
-
-LinkedIn:
-https://www.linkedin.com/in/christopher-heaviside-8a2930412/
-
----
-
-## 📄 Lizenz
-
-Dieses Projekt wurde als Portfolio- und Demonstrationsprojekt erstellt.
-
-Freie Nutzung zu Lern- und Demonstrationszwecken.
