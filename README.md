@@ -1,30 +1,58 @@
 # 📊 KI Lead Manager
 
-Ein modernes, interaktives Vertriebsdashboard zur Verwaltung, Bewertung und Priorisierung von Leads.
+**KI Lead Manager** ist eine moderne Lead-Management- und Vertriebsdashboard-Demo, entwickelt von **Heaviside Solutions**. Die Anwendung zeigt, wie Unternehmen Leads erfassen, priorisieren, bewerten und ihren Vertriebsprozess effizienter gestalten können.
 
-Der **KI Lead Manager** ist eine browserbasierte Business-Software-Demo von **Heaviside Solutions**. Das Projekt zeigt, wie Unternehmen neue Interessenten strukturiert erfassen, automatisch bewerten und ihre Vertriebschancen übersichtlich steuern können.
+Die Demo kombiniert ein interaktives Dashboard, automatisches Lead-Scoring, Umsatzpotenzial-Berechnung und eine strukturierte Lead-Verwaltung in einer modernen SaaS-ähnlichen Benutzeroberfläche.
+
+🌐 Website: https://heaviside-solutions.com  
+🚀 Live Demo: https://heaviside479.github.io/ai-lead-manager-demo/
 
 ---
 
 ## 🚀 Live Demo
 
-👉 **Demo testen:**  
+👉 Demo öffnen:
+
 https://heaviside479.github.io/ai-lead-manager-demo/
+
+---
+
+## 🖼 Screenshots
+
+### Dashboard Übersicht
+
+![KI Lead Manager Dashboard](screenshots/ai-lead-manager-dashboard-overview.png)
+
+### Lead-Erfassung
+
+![KI Lead Manager Lead Form](screenshots/ai-lead-manager-lead-form.png)
+
+### Geschäftlicher Nutzen
+
+![KI Lead Manager Business Benefits](screenshots/ai-lead-manager-business-benefits.png)
 
 ---
 
 ## 🎯 Projektziel
 
-Viele Unternehmen verlieren potenzielle Kunden, weil Anfragen unstrukturiert eingehen, wichtige Leads nicht priorisiert werden und ein klarer Überblick über den Vertriebsprozess fehlt.
+Viele Unternehmen erhalten Kundenanfragen über verschiedene Kanäle:
 
-Diese Demo zeigt, wie ein digitales Lead-Management-System dabei helfen kann:
+- Kontaktformulare
+- Landingpages
+- E-Mails
+- Empfehlungen
+- Telefonanfragen
+
+Ohne ein strukturiertes System gehen wichtige Informationen häufig verloren. Leads werden unterschiedlich bewertet, Follow-ups vergessen oder potenzielle Kunden zu spät kontaktiert.
+
+Der KI Lead Manager demonstriert, wie ein digitales Lead-Management-System dabei helfen kann:
 
 - Leads zentral zu erfassen
-- Verkaufschancen automatisch zu bewerten
-- wichtige Interessenten schneller zu erkennen
-- Umsatzpotenziale sichtbar zu machen
-- Vertriebsprozesse strukturierter zu steuern
-- Kennzahlen live im Dashboard darzustellen
+- Vertriebschancen sichtbar zu machen
+- Interessenten automatisch zu priorisieren
+- Umsatzpotenziale zu berechnen
+- Vertriebsprozesse zu strukturieren
+- Entscheidungen datenbasiert zu treffen
 
 ---
 
@@ -38,11 +66,11 @@ Das Dashboard aktualisiert sich automatisch und zeigt:
 - aktive Leads
 - gewonnene Leads
 - geschätztes Umsatzpotenzial
-- Pipeline-Status
+- Vertriebs-Pipeline
 
 ### 👥 Lead-Verwaltung
 
-Neue Leads können direkt über ein Formular hinzugefügt werden:
+Leads können direkt im Browser angelegt und verwaltet werden:
 
 - Name
 - Unternehmen
@@ -54,9 +82,9 @@ Neue Leads können direkt über ein Formular hinzugefügt werden:
 - Status
 - Notizen
 
-### ⭐ Automatischer Lead Score
+### ⭐ Automatisches Lead Scoring
 
-Jeder Lead erhält automatisch einen Score von **0 bis 100**.
+Jeder Lead erhält automatisch einen Score zwischen **0 und 100**.
 
 Die Bewertung basiert auf:
 
@@ -67,17 +95,22 @@ Die Bewertung basiert auf:
 
 Dadurch werden besonders wertvolle Kontakte sofort sichtbar.
 
-### 💾 Lokale Speicherung
+### 💾 Lokale Datenspeicherung
 
-Die Demo nutzt `localStorage`, damit hinzugefügte Leads, gelöschte Einträge und Statusänderungen auch nach dem Neuladen der Seite erhalten bleiben.
+Die Anwendung verwendet **localStorage**, damit:
 
-### 🔄 Demo zurücksetzen
+- neue Leads gespeichert bleiben
+- Statusänderungen erhalten bleiben
+- gelöschte Leads nicht wieder erscheinen
+- Dashboard-Daten nach dem Neuladen bestehen bleiben
 
-Über den Reset-Button kann die Demo jederzeit wieder auf die vorbereiteten Beispiel-Leads zurückgesetzt werden.
+### 🔄 Demo-Daten zurücksetzen
+
+Die Anwendung enthält vorbereitete Demo-Leads. Mit einem Klick kann die gesamte Demo jederzeit auf den ursprünglichen Zustand zurückgesetzt werden.
 
 ### 📱 Responsive Design
 
-Die Anwendung ist für verschiedene Bildschirmgrößen optimiert:
+Der KI Lead Manager wurde vollständig responsive entwickelt und funktioniert auf:
 
 - Desktop
 - Laptop
@@ -86,7 +119,23 @@ Die Anwendung ist für verschiedene Bildschirmgrößen optimiert:
 
 ---
 
-## 🛠 Technologien
+## 💼 Anwendungsbereiche
+
+Ein vergleichbares Lead-Management-System kann eingesetzt werden für:
+
+- Agenturen
+- IT-Dienstleister
+- Softwareunternehmen
+- Beratungsunternehmen
+- Immobilienunternehmen
+- Handwerksbetriebe
+- Vertriebsorganisationen
+- Startups
+- Dienstleistungsunternehmen
+
+---
+
+## 🛠 Verwendete Technologien
 
 - HTML5
 - CSS3
@@ -97,32 +146,40 @@ Die Anwendung ist für verschiedene Bildschirmgrößen optimiert:
 
 ---
 
-## 💼 Mögliche Anwendungsbereiche
+## 🎨 Design-Fokus
 
-Ein vergleichbares System kann eingesetzt werden für:
+Das Interface orientiert sich an modernen SaaS-, CRM- und Dashboard-Lösungen.
 
-- Agenturen
-- IT-Dienstleister
-- Beratungsunternehmen
-- Immobilienunternehmen
-- Handwerksbetriebe
-- Vertriebsorganisationen
-- Startups
-- lokale Dienstleister
+Inspirationen:
+
+- HubSpot
+- Salesforce
+- Pipedrive
+- Monday.com
+
+Schwerpunkte:
+
+- moderne Business-Software-Optik
+- klare Benutzerführung
+- hohe Lesbarkeit
+- strukturierte Datenvisualisierung
+- professionelle Dashboard-Darstellung
 
 ---
 
-## 🎨 Design-Fokus
+## 🧠 Was dieses Projekt demonstriert
 
-Das Interface orientiert sich an modernen SaaS-, CRM- und Vertriebsplattformen.
+Dieses Portfolio-Projekt zeigt:
 
-Der Fokus liegt auf:
-
-- klarer Benutzerführung
-- professioneller Dashboard-Optik
-- verständlichen Kennzahlen
-- schneller Lead-Bewertung
-- moderner Business-Software-Ästhetik
+- Frontend-Entwicklung mit HTML, CSS und JavaScript
+- Dashboard-Design
+- Lead-Management-Konzepte
+- Datenvisualisierung
+- benutzerfreundliche Formulare
+- dynamische DOM-Manipulation
+- automatische Lead-Bewertung
+- browserbasierte Datenspeicherung
+- responsive Webentwicklung
 
 ---
 
@@ -140,3 +197,6 @@ ai-lead-manager-demo/
 │   └── logo.png
 │
 └── screenshots/
+    ├── ai-lead-manager-dashboard-overview.png
+    ├── ai-lead-manager-lead-form.png
+    └── ai-lead-manager-business-benefits.png
