@@ -4,13 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>KI Lead Manager | Vertriebsdashboard Demo</title>
+  <title>KI Lead Manager | Vertriebsdashboard Demo von Heaviside Solutions</title>
 
   <meta
     name="description"
-    content="KI Lead Manager ist ein modernes Vertriebsdashboard zur Verwaltung, Bewertung und Priorisierung von Leads."
+    content="Interaktive KI Lead Manager Demo: Leads erfassen, bewerten, priorisieren und Umsatzpotenzial im Vertriebsdashboard sichtbar machen."
   />
 
+  <meta name="author" content="Heaviside Solutions" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="KI Lead Manager | Vertriebsdashboard Demo" />
+  <meta
+    property="og:description"
+    content="Eine moderne Demo-Anwendung für Lead Management, KI-Scoring und Vertriebsübersicht."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+
+  <link rel="icon" href="assets/logo.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -18,47 +30,48 @@
   <header class="app-header">
     <a href="index.html" class="brand" aria-label="KI Lead Manager Startseite">
       <img src="assets/logo.png" alt="KI Lead Manager Logo" class="logo" />
+      <span>KI Lead Manager</span>
     </a>
 
     <button class="menu-toggle" aria-label="Navigation öffnen" aria-expanded="false">
       ☰
     </button>
 
-    <nav class="nav-links">
+    <nav class="nav-links" aria-label="Hauptnavigation">
       <a href="#dashboard">Dashboard</a>
       <a href="#leads">Leads</a>
       <a href="#features">Funktionen</a>
       <a href="#value">Nutzen</a>
-      <a href="#contact" class="nav-cta">Heaviside Solutions</a>
+      <a href="#contact" class="nav-cta">Projekt anfragen</a>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="dashboard">
       <div class="hero-content">
-        <p class="eyebrow">Business Software Demo</p>
+        <p class="eyebrow">Interaktive Business Software Demo</p>
 
-        <h1>Leads verwalten, bewerten und schneller in Kunden verwandeln</h1>
+        <h1>Leads schneller bewerten, priorisieren und in Kunden verwandeln</h1>
 
         <p class="hero-text">
-          Der KI Lead Manager ist eine interaktive Demo-Anwendung für modernes
-          Lead Management. Unternehmen können Interessenten erfassen, priorisieren,
-          bewerten und ihren Vertriebsprozess übersichtlich steuern.
+          Der KI Lead Manager zeigt, wie ein modernes Vertriebsdashboard Unternehmen dabei unterstützt,
+          neue Anfragen strukturiert zu erfassen, automatisch zu bewerten und die wertvollsten Chancen
+          sofort sichtbar zu machen.
         </p>
 
         <div class="hero-actions">
-          <a href="#leads" class="btn primary">Lead hinzufügen</a>
+          <a href="#leads" class="btn primary">Demo ausprobieren</a>
           <a href="#features" class="btn secondary">Funktionen ansehen</a>
         </div>
 
-        <div class="trust-row">
+        <div class="trust-row" aria-label="Projekt Schwerpunkte">
           <span>Lead Management</span>
-          <span>Vertriebsdashboard</span>
-          <span>KI-Scoring Demo</span>
+          <span>KI-Scoring</span>
+          <span>CRM Dashboard</span>
         </div>
       </div>
 
-      <div class="dashboard-preview">
+      <div class="dashboard-preview" aria-label="Live Dashboard Vorschau">
         <div class="preview-header">
           <div>
             <span class="status-dot"></span>
@@ -93,7 +106,7 @@
           </div>
         </div>
 
-        <div class="pipeline-preview">
+        <div class="pipeline-preview" aria-label="Pipeline Übersicht">
           <div>
             <span>Neu</span>
             <strong id="pipelineNew">0</strong>
@@ -117,7 +130,7 @@
       </div>
     </section>
 
-    <section class="stats-section">
+    <section class="stats-section" aria-label="Demo Kennzahlen">
       <div>
         <strong>100%</strong>
         <span>Browserbasierte Demo</span>
@@ -139,8 +152,8 @@
         <p class="eyebrow">Lead Management</p>
         <h2>Neuen Lead erfassen</h2>
         <p>
-          Fügen Sie Interessenten hinzu und lassen Sie automatisch einen Lead-Score,
-          eine Priorität und ein geschätztes Umsatzpotenzial berechnen.
+          Testen Sie die Demo direkt: Fügen Sie einen Lead hinzu und sehen Sie,
+          wie Dashboard, Tabelle, Pipeline und Lead-Score automatisch aktualisiert werden.
         </p>
       </div>
 
@@ -148,17 +161,17 @@
         <form class="lead-form" id="leadForm">
           <div class="form-grid">
             <div class="form-group">
-              <label for="leadName">Name</label>
+              <label for="leadName">Name *</label>
               <input type="text" id="leadName" placeholder="Max Mustermann" required />
             </div>
 
             <div class="form-group">
-              <label for="companyName">Unternehmen</label>
+              <label for="companyName">Unternehmen *</label>
               <input type="text" id="companyName" placeholder="Muster GmbH" required />
             </div>
 
             <div class="form-group">
-              <label for="leadEmail">E-Mail</label>
+              <label for="leadEmail">E-Mail *</label>
               <input type="email" id="leadEmail" placeholder="kontakt@unternehmen.de" required />
             </div>
 
@@ -168,7 +181,7 @@
             </div>
 
             <div class="form-group">
-              <label for="budget">Budget</label>
+              <label for="budget">Budget *</label>
               <select id="budget" required>
                 <option value="">Budget auswählen</option>
                 <option value="500">bis 500 €</option>
@@ -180,7 +193,7 @@
             </div>
 
             <div class="form-group">
-              <label for="interest">Interesse</label>
+              <label for="interest">Interesse *</label>
               <select id="interest" required>
                 <option value="">Interesse auswählen</option>
                 <option value="website">Website</option>
@@ -192,7 +205,7 @@
             </div>
 
             <div class="form-group">
-              <label for="priority">Priorität</label>
+              <label for="priority">Priorität *</label>
               <select id="priority" required>
                 <option value="">Priorität auswählen</option>
                 <option value="hoch">Hoch</option>
@@ -202,7 +215,7 @@
             </div>
 
             <div class="form-group">
-              <label for="status">Status</label>
+              <label for="status">Status *</label>
               <select id="status" required>
                 <option value="neu">Neu</option>
                 <option value="kontaktiert">Kontaktiert</option>
@@ -219,19 +232,25 @@
             <textarea id="notes" placeholder="Kurze Notiz zum Lead oder Projektwunsch"></textarea>
           </div>
 
-          <button type="submit" class="btn primary">
-            Lead speichern
-          </button>
+          <div class="form-actions">
+            <button type="submit" class="btn primary">
+              Lead speichern
+            </button>
+
+            <button type="button" class="btn secondary" id="resetDemoData">
+              Demo zurücksetzen
+            </button>
+          </div>
         </form>
 
-        <div class="lead-insights">
+        <aside class="lead-insights">
           <p class="eyebrow">KI Lead Score</p>
           <h3>Automatische Bewertung</h3>
 
           <p>
             Jeder Lead erhält automatisch einen Score basierend auf Budget,
-            Priorität, Interesse und Status. Dadurch wird sichtbar, welche
-            Kontakte besonders wertvoll sind.
+            Priorität, Interesse und Status. So wird sofort sichtbar, welche Kontakte
+            zuerst bearbeitet werden sollten.
           </p>
 
           <div class="score-example">
@@ -246,9 +265,9 @@
             <li>Priorisierte Interessenten</li>
             <li>Geschätztes Umsatzpotenzial</li>
             <li>Automatische Vertriebsübersicht</li>
-            <li>Live aktualisierte Kennzahlen</li>
+            <li>Daten bleiben im Browser gespeichert</li>
           </ul>
-        </div>
+        </aside>
       </div>
     </section>
 
@@ -257,8 +276,8 @@
         <p class="eyebrow">Lead Übersicht</p>
         <h2>Aktuelle Leads</h2>
         <p>
-          Alle hinzugefügten Leads erscheinen automatisch in der Tabelle. Status,
-          Priorität und Score helfen bei der schnellen Bewertung.
+          Alle Leads werden nach Score sortiert angezeigt. Statusänderungen und gelöschte Leads
+          werden automatisch im Browser gespeichert.
         </p>
       </div>
 
@@ -291,8 +310,8 @@
         <p class="eyebrow">Funktionen</p>
         <h2>Was diese Demo zeigt</h2>
         <p>
-          Dieses Projekt demonstriert moderne Frontend-Logik, interaktive
-          Datenverarbeitung und ein professionelles Software-Interface.
+          Dieses Projekt demonstriert eine moderne, interaktive Business-Anwendung
+          mit Dashboard, Formularlogik, persistenter Datenspeicherung und automatischer Bewertung.
         </p>
       </div>
 
@@ -300,25 +319,49 @@
         <article class="feature-card">
           <span>👥</span>
           <h3>Lead-Verwaltung</h3>
-          <p>Neue Leads können direkt im Browser erstellt, bewertet und in der Tabelle angezeigt werden.</p>
+          <p>
+            Neue Leads können direkt im Browser erstellt, angezeigt, gelöscht und verwaltet werden.
+          </p>
         </article>
 
         <article class="feature-card">
           <span>⭐</span>
-          <h3>KI-Scoring Logik</h3>
-          <p>Die Anwendung berechnet automatisch einen Lead-Score basierend auf mehreren Faktoren.</p>
+          <h3>Automatisches Scoring</h3>
+          <p>
+            Jeder Lead erhält einen Score auf Basis von Budget, Status, Priorität und Interesse.
+          </p>
         </article>
 
         <article class="feature-card">
           <span>📊</span>
           <h3>Live Dashboard</h3>
-          <p>Kennzahlen wie Leads, aktive Chancen und Umsatzpotenzial aktualisieren sich automatisch.</p>
+          <p>
+            Kennzahlen wie aktive Leads, gewonnene Leads und Umsatzpotenzial aktualisieren sich sofort.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>💾</span>
+          <h3>Lokale Speicherung</h3>
+          <p>
+            Erfasste Leads bleiben dank localStorage auch nach dem Neuladen der Seite erhalten.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>🔄</span>
+          <h3>Status Pipeline</h3>
+          <p>
+            Leads können zwischen Neu, Kontaktiert, Angebot, Verhandlung, Gewonnen und Verloren wechseln.
+          </p>
         </article>
 
         <article class="feature-card">
           <span>💼</span>
-          <h3>Business Software UI</h3>
-          <p>Das Design orientiert sich an modernen SaaS- und CRM-Dashboards.</p>
+          <h3>SaaS Interface</h3>
+          <p>
+            Das Design orientiert sich an modernen CRM-, SaaS- und Vertriebsdashboards.
+          </p>
         </article>
       </div>
     </section>
@@ -326,49 +369,61 @@
     <section class="section dark" id="value">
       <div class="section-heading center">
         <p class="eyebrow">Geschäftlicher Nutzen</p>
-        <h2>Warum Lead Management wichtig ist</h2>
+        <h2>Warum Unternehmen ein Lead Dashboard brauchen</h2>
       </div>
 
       <div class="value-grid">
         <article class="value-card">
           <strong>01</strong>
           <h3>Bessere Übersicht</h3>
-          <p>Unternehmen sehen sofort, welche Interessenten offen, wichtig oder bereits gewonnen sind.</p>
+          <p>
+            Alle Anfragen, Kontakte und Verkaufschancen werden an einem zentralen Ort sichtbar.
+          </p>
         </article>
 
         <article class="value-card">
           <strong>02</strong>
-          <h3>Höhere Abschlusschancen</h3>
-          <p>Priorisierte Leads helfen dabei, wertvolle Kontakte schneller zu bearbeiten.</p>
+          <h3>Schnellere Entscheidungen</h3>
+          <p>
+            Durch Score, Budget und Status erkennt das Team sofort, welche Leads Priorität haben.
+          </p>
         </article>
 
         <article class="value-card">
           <strong>03</strong>
           <h3>Mehr Struktur im Vertrieb</h3>
-          <p>Status, Score und Budget machen den Vertriebsprozess messbarer und planbarer.</p>
+          <p>
+            Der Vertriebsprozess wird messbarer, nachvollziehbarer und besser steuerbar.
+          </p>
         </article>
       </div>
     </section>
 
     <section class="cta-section" id="contact">
       <div>
-        <p class="eyebrow">Portfolio-Projekt</p>
-        <h2>Entwickelt von Heaviside Solutions</h2>
+        <p class="eyebrow">Portfolio-Projekt von Heaviside Solutions</p>
+        <h2>Sie möchten eine ähnliche Lösung für Ihr Unternehmen?</h2>
         <p>
-          Dieses Projekt zeigt, wie moderne Business-Software mit HTML, CSS und JavaScript
-          umgesetzt werden kann – inklusive Dashboard, Formularlogik, Tabellenansicht und
-          automatischer Lead-Bewertung.
+          Dieses Projekt zeigt, wie individuelle Business-Software mit moderner Webtechnologie
+          umgesetzt werden kann – vom Lead Dashboard über CRM-Funktionen bis hin zu
+          Automatisierung und KI-gestützter Priorisierung.
         </p>
       </div>
 
-      <a
-        href="https://heaviside-solutions.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn primary"
-      >
-        Heaviside Solutions besuchen
-      </a>
+      <div class="hero-actions">
+        <a
+          href="https://heaviside-solutions.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn primary"
+        >
+          Heaviside Solutions besuchen
+        </a>
+
+        <a href="#leads" class="btn secondary">
+          Demo erneut testen
+        </a>
+      </div>
     </section>
   </main>
 
