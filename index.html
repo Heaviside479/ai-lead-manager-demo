@@ -1,922 +1,444 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --bg: #050816;
-  --bg-soft: #0b1024;
-  --panel: rgba(15, 23, 42, 0.92);
-  --panel-soft: rgba(15, 23, 42, 0.72);
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --muted-light: #cbd5e1;
-  --blue: #38bdf8;
-  --cyan: #22d3ee;
-  --purple: #8b5cf6;
-  --green: #22c55e;
-  --yellow: #facc15;
-  --red: #fb7185;
-  --border: rgba(148, 163, 184, 0.2);
-  --border-strong: rgba(56, 189, 248, 0.35);
-  --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
-  --glow: 0 0 45px rgba(56, 189, 248, 0.22);
-  --radius-lg: 30px;
-  --radius-md: 22px;
-  --radius-sm: 15px;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 34%),
-    radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 34%),
-    var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-
-::selection {
-  background: rgba(56, 189, 248, 0.35);
-  color: #fff;
-}
-
-/* HEADER */
-
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  min-height: 88px;
-  padding: 14px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  background: rgba(5, 8, 22, 0.92);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--border);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 230px;
-}
-
-.brand .logo,
-.logo {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
-}
-
-.brand span {
-  color: var(--text);
-  font-size: 1.05rem;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  color: var(--muted);
-  font-weight: 800;
-  font-size: 0.95rem;
-  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--blue);
-}
-
-.nav-cta {
-  padding: 10px 16px;
-  border-radius: 999px;
-  color: var(--blue) !important;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-}
-
-.nav-cta:hover {
-  background: rgba(56, 189, 248, 0.16);
-  border-color: rgba(56, 189, 248, 0.55);
-}
-
-.menu-toggle {
-  display: none;
-  padding: 9px 13px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--blue);
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 92vh;
-  padding: 110px 7%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 1.05fr);
-  gap: 54px;
-  align-items: center;
-}
-
-.hero-content {
-  max-width: 780px;
-}
-
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 16px;
-  padding: 7px 14px;
-  border-radius: 999px;
-  color: var(--cyan);
-  background: rgba(34, 211, 238, 0.08);
-  border: 1px solid rgba(34, 211, 238, 0.28);
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-h1 {
-  margin-bottom: 24px;
-  font-size: clamp(3rem, 6.6vw, 6.2rem);
-  line-height: 0.98;
-  letter-spacing: -0.06em;
-}
-
-h2 {
-  margin-bottom: 18px;
-  font-size: clamp(2.05rem, 4.2vw, 4rem);
-  line-height: 1.08;
-  letter-spacing: -0.045em;
-}
-
-h3 {
-  color: var(--text);
-  line-height: 1.2;
-}
-
-.hero-text,
-.section-heading p,
-.metric-card span,
-.metric-card small,
-.pipeline-preview span,
-.lead-insights p,
-.feature-card p,
-.value-card p,
-.cta-section p,
-.footer p,
-.check-list li {
-  color: var(--muted);
-}
-
-.hero-text {
-  max-width: 700px;
-  font-size: 1.15rem;
-}
-
-.hero-actions,
-.form-actions {
-  margin-top: 34px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.form-actions {
-  margin-top: 22px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50px;
-  padding: 14px 24px;
-  border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, 0.5);
-  color: var(--blue);
-  background: transparent;
-  font-weight: 900;
-  cursor: pointer;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--glow);
-}
-
-.btn.primary {
-  background: linear-gradient(135deg, var(--blue), var(--purple));
-  color: #fff;
-  border: none;
-}
-
-.btn.secondary {
-  background: rgba(15, 23, 42, 0.72);
-}
-
-.btn.secondary:hover {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: rgba(56, 189, 248, 0.65);
-}
-
-.trust-row {
-  margin-top: 28px;
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.trust-row span {
-  padding: 8px 13px;
-  border-radius: 999px;
-  color: var(--muted-light);
-  background: rgba(148, 163, 184, 0.08);
-  border: 1px solid var(--border);
-  font-size: 0.88rem;
-  font-weight: 800;
-}
-
-/* CARDS */
-
-.dashboard-preview,
-.lead-form,
-.lead-insights,
-.feature-card,
-.value-card,
-.table-wrapper {
-  background: linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(17, 24, 39, 0.82));
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-}
-
-.dashboard-preview {
-  padding: 28px;
-  border-color: rgba(56, 189, 248, 0.28);
-  box-shadow: var(--shadow), var(--glow);
-}
-
-.preview-header {
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  color: var(--muted);
-  font-weight: 900;
-}
-
-.status-dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
-}
-
-.preview-badge {
-  padding: 7px 12px;
-  border-radius: 999px;
-  color: var(--cyan);
-  background: rgba(34, 211, 238, 0.1);
-  border: 1px solid rgba(34, 211, 238, 0.3);
-  font-size: 0.8rem;
-  font-weight: 900;
-}
-
-.metric-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.metric-card,
-.pipeline-preview div {
-  padding: 20px;
-  border-radius: var(--radius-md);
-  background: rgba(2, 6, 23, 0.52);
-  border: 1px solid var(--border);
-}
-
-.metric-card strong {
-  display: block;
-  margin: 10px 0 6px;
-  color: var(--text);
-  font-size: clamp(1.7rem, 3vw, 2.2rem);
-  line-height: 1;
-}
-
-.pipeline-preview {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.pipeline-preview strong {
-  display: block;
-  color: var(--blue);
-  font-size: 1.8rem;
-  line-height: 1;
-}
-
-/* STATS */
-
-.stats-section {
-  padding: 42px 7%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-  background: rgba(15, 23, 42, 0.55);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.stats-section div {
-  text-align: center;
-}
-
-.stats-section strong {
-  display: block;
-  color: var(--blue);
-  font-size: 2.5rem;
-  line-height: 1;
-}
-
-.stats-section span {
-  color: var(--muted);
-  font-weight: 800;
-}
-
-/* SECTIONS */
-
-.section {
-  padding: 105px 7%;
-}
-
-.section.dark {
-  background:
-    radial-gradient(circle at top right, rgba(139, 92, 246, 0.12), transparent 34%),
-    var(--bg-soft);
-}
-
-.section-heading {
-  max-width: 880px;
-  margin-bottom: 44px;
-}
-
-.section-heading.center {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-/* FORM */
-
-.lead-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
-  gap: 28px;
-  align-items: start;
-}
-
-.lead-form,
-.lead-insights {
-  padding: 30px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.form-group {
-  margin-bottom: 18px;
-  display: grid;
-  gap: 8px;
-}
-
-.form-group label {
-  color: var(--muted-light);
-  font-weight: 800;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea,
-.status-select {
-  width: 100%;
-  padding: 15px 16px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: rgba(2, 6, 23, 0.72);
-  color: var(--text);
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.form-group select,
-.status-select {
-  cursor: pointer;
-}
-
-.form-group textarea {
-  min-height: 130px;
-  resize: vertical;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(148, 163, 184, 0.65);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus,
-.status-select:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
-}
-
-.lead-insights h3 {
-  margin-bottom: 14px;
-  font-size: 1.8rem;
-}
-
-.score-example {
-  margin: 26px 0;
-  padding: 24px;
-  display: grid;
-  gap: 10px;
-  place-items: center;
-  text-align: center;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at center, rgba(56, 189, 248, 0.16), transparent 70%),
-    rgba(2, 6, 23, 0.55);
-  border: 1px solid rgba(56, 189, 248, 0.26);
-}
-
-.score-example strong {
-  color: var(--cyan);
-  font-size: 4rem;
-  line-height: 1;
-}
-
-.score-example span {
-  color: var(--muted);
-  font-weight: 900;
-}
-
-.check-list {
-  list-style: none;
-  display: grid;
-  gap: 12px;
-}
-
-.check-list li::before {
-  content: "✓ ";
-  color: var(--green);
-  font-weight: 900;
-}
-
-/* TABLE */
-
-.table-wrapper {
-  overflow-x: auto;
-  padding: 0;
-}
-
-.lead-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 940px;
-}
-
-.lead-table th,
-.lead-table td {
-  padding: 18px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-}
-
-.lead-table th {
-  color: var(--cyan);
-  background: rgba(2, 6, 23, 0.5);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-
-.lead-table td {
-  color: var(--muted);
-}
-
-.lead-table td strong {
-  color: var(--text);
-}
-
-.lead-table td small {
-  color: var(--muted);
-}
-
-.empty-row td {
-  text-align: center;
-  padding: 34px;
-}
-
-.status-select {
-  min-width: 150px;
-  padding: 9px 12px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 900;
-}
-
-.status-badge,
-.priority-badge,
-.score-badge {
-  display: inline-block;
-  padding: 7px 11px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.status-neu {
-  color: var(--blue);
-  background: rgba(56, 189, 248, 0.12);
-}
-
-.status-kontaktiert {
-  color: var(--cyan);
-  background: rgba(34, 211, 238, 0.12);
-}
-
-.status-angebot,
-.status-verhandlung {
-  color: var(--yellow);
-  background: rgba(250, 204, 21, 0.12);
-}
-
-.status-gewonnen {
-  color: var(--green);
-  background: rgba(34, 197, 94, 0.12);
-}
-
-.status-verloren {
-  color: var(--red);
-  background: rgba(251, 113, 133, 0.12);
-}
-
-.priority-hoch {
-  color: var(--red);
-  background: rgba(251, 113, 133, 0.12);
-}
-
-.priority-mittel {
-  color: var(--yellow);
-  background: rgba(250, 204, 21, 0.12);
-}
-
-.priority-niedrig {
-  color: var(--green);
-  background: rgba(34, 197, 94, 0.12);
-}
-
-.score-badge {
-  color: var(--text);
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(139, 92, 246, 0.25));
-  border: 1px solid rgba(56, 189, 248, 0.35);
-}
-
-.delete-btn {
-  padding: 8px 12px;
-  border: 1px solid rgba(251, 113, 133, 0.35);
-  border-radius: 999px;
-  color: var(--red);
-  background: rgba(251, 113, 133, 0.08);
-  cursor: pointer;
-  font-weight: 900;
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-}
-
-.delete-btn:hover {
-  transform: translateY(-2px);
-  background: rgba(251, 113, 133, 0.14);
-  border-color: rgba(251, 113, 133, 0.55);
-}
-
-/* FEATURE / VALUE */
-
-.feature-grid,
-.value-grid {
-  display: grid;
-  gap: 22px;
-}
-
-.feature-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.value-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.feature-card,
-.value-card {
-  padding: 28px;
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
-
-.feature-card:hover,
-.value-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(56, 189, 248, 0.45);
-  background: linear-gradient(145deg, rgba(15, 23, 42, 1), rgba(17, 24, 39, 0.9));
-}
-
-.feature-card span {
-  display: inline-block;
-  margin-bottom: 16px;
-  font-size: 2rem;
-}
-
-.feature-card h3,
-.value-card h3 {
-  margin-bottom: 12px;
-}
-
-.value-card strong {
-  display: inline-block;
-  margin-bottom: 16px;
-  color: var(--cyan);
-  font-size: 1.8rem;
-}
-
-/* CTA / FOOTER */
-
-.cta-section {
-  padding: 100px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  background:
-    linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(139, 92, 246, 0.16)),
-    var(--bg-soft);
-  border-top: 1px solid var(--border);
-}
-
-.cta-section > div:first-child {
-  max-width: 780px;
-}
-
-.cta-section .hero-actions {
-  margin-top: 0;
-  justify-content: flex-end;
-}
-
-.footer {
-  padding: 34px 7%;
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  background: #020617;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-}
-
-.footer strong {
-  color: var(--text);
-}
-
-/* ANIMATIONS */
-
-.fade-element {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.fade-element.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 1150px) {
-  .hero,
-  .lead-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-content {
-    max-width: 900px;
-  }
-
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .pipeline-preview {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .app-header {
-    min-height: auto;
-    flex-wrap: wrap;
-    padding: 16px 6%;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 18px;
-    gap: 14px;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links a {
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .nav-cta {
-    width: auto !important;
-    padding: 10px 16px !important;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: 85px 6%;
-    text-align: center;
-  }
-
-  .hero-actions,
-  .trust-row {
-    justify-content: center;
-  }
-
-  .dashboard-preview,
-  .lead-form,
-  .lead-insights {
-    text-align: left;
-  }
-
-  .stats-section,
-  .metric-grid,
-  .form-grid,
-  .value-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section,
-  .cta-section {
-    padding: 80px 6%;
-  }
-
-  .cta-section,
-  .footer {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .cta-section .hero-actions {
-    justify-content: center;
-  }
-
-  .btn {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-@media (max-width: 640px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pipeline-preview {
-    grid-template-columns: 1fr;
-  }
-
-  .brand {
-    min-width: auto;
-  }
-
-  .brand .logo,
-  .logo {
-    width: 48px;
-    height: 48px;
-  }
-
-  .brand span {
-    font-size: 0.95rem;
-  }
-
-  h1 {
-    font-size: 2.65rem;
-  }
-
-  h2 {
-    font-size: 2.1rem;
-  }
-
-  .hero {
-    padding-top: 70px;
-  }
-
-  .dashboard-preview,
-  .lead-form,
-  .lead-insights,
-  .feature-card,
-  .value-card {
-    border-radius: 22px;
-  }
-
-  .dashboard-preview,
-  .lead-form,
-  .lead-insights {
-    padding: 22px;
-  }
-
-  .preview-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .score-example strong {
-    font-size: 3.2rem;
-  }
-
-  .lead-table th,
-  .lead-table td {
-    padding: 15px;
-  }
-}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>KI Lead Manager | Vertriebsdashboard Demo von Heaviside Solutions</title>
+
+  <meta
+    name="description"
+    content="Interaktive KI Lead Manager Demo: Leads erfassen, bewerten, priorisieren und Umsatzpotenzial im Vertriebsdashboard sichtbar machen."
+  />
+
+  <meta name="author" content="Heaviside Solutions" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="KI Lead Manager | Vertriebsdashboard Demo" />
+  <meta
+    property="og:description"
+    content="Eine moderne Demo-Anwendung für Lead Management, KI-Scoring und Vertriebsübersicht."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <a href="index.html" class="brand" aria-label="KI Lead Manager Startseite">
+      <img src="assets/logo.png" alt="KI Lead Manager Logo" class="logo" />
+      <span>KI Lead Manager</span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Navigation öffnen" aria-expanded="false">
+      ☰
+    </button>
+
+    <nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#leads">Leads</a>
+      <a href="#features">Funktionen</a>
+      <a href="#value">Nutzen</a>
+      <a href="#contact" class="nav-cta">Projekt anfragen</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="dashboard">
+      <div class="hero-content">
+        <p class="eyebrow">Interaktive Business Software Demo</p>
+
+        <h1>Leads schneller bewerten, priorisieren und in Kunden verwandeln</h1>
+
+        <p class="hero-text">
+          Der KI Lead Manager zeigt, wie ein modernes Vertriebsdashboard Unternehmen dabei unterstützt,
+          neue Anfragen strukturiert zu erfassen, automatisch zu bewerten und die wertvollsten Chancen
+          sofort sichtbar zu machen.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#leads" class="btn primary">Demo ausprobieren</a>
+          <a href="#features" class="btn secondary">Funktionen ansehen</a>
+        </div>
+
+        <div class="trust-row" aria-label="Projekt Schwerpunkte">
+          <span>Lead Management</span>
+          <span>KI-Scoring</span>
+          <span>CRM Dashboard</span>
+        </div>
+      </div>
+
+      <div class="dashboard-preview" aria-label="Live Dashboard Vorschau">
+        <div class="preview-header">
+          <div>
+            <span class="status-dot"></span>
+            Live Dashboard
+          </div>
+          <span class="preview-badge">Demo</span>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <span>Gesamte Leads</span>
+            <strong id="totalLeads">0</strong>
+            <small>Alle erfassten Kontakte</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Aktive Leads</span>
+            <strong id="activeLeads">0</strong>
+            <small>Noch offene Chancen</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Gewonnen</span>
+            <strong id="wonLeads">0</strong>
+            <small>Erfolgreiche Abschlüsse</small>
+          </div>
+
+          <div class="metric-card">
+            <span>Umsatzpotenzial</span>
+            <strong id="revenuePotential">0 €</strong>
+            <small>Geschätzter Gesamtwert</small>
+          </div>
+        </div>
+
+        <div class="pipeline-preview" aria-label="Pipeline Übersicht">
+          <div>
+            <span>Neu</span>
+            <strong id="pipelineNew">0</strong>
+          </div>
+
+          <div>
+            <span>Kontakt</span>
+            <strong id="pipelineContacted">0</strong>
+          </div>
+
+          <div>
+            <span>Angebot</span>
+            <strong id="pipelineOffer">0</strong>
+          </div>
+
+          <div>
+            <span>Gewonnen</span>
+            <strong id="pipelineWon">0</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-label="Demo Kennzahlen">
+      <div>
+        <strong>100%</strong>
+        <span>Browserbasierte Demo</span>
+      </div>
+
+      <div>
+        <strong>6</strong>
+        <span>Lead-Status Optionen</span>
+      </div>
+
+      <div>
+        <strong>KI</strong>
+        <span>Lead-Score Logik</span>
+      </div>
+    </section>
+
+    <section class="section" id="leads">
+      <div class="section-heading center">
+        <p class="eyebrow">Lead Management</p>
+        <h2>Neuen Lead erfassen</h2>
+        <p>
+          Testen Sie die Demo direkt: Fügen Sie einen Lead hinzu und sehen Sie,
+          wie Dashboard, Tabelle, Pipeline und Lead-Score automatisch aktualisiert werden.
+        </p>
+      </div>
+
+      <div class="lead-layout">
+        <form class="lead-form" id="leadForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="leadName">Name *</label>
+              <input type="text" id="leadName" placeholder="Max Mustermann" required />
+            </div>
+
+            <div class="form-group">
+              <label for="companyName">Unternehmen *</label>
+              <input type="text" id="companyName" placeholder="Muster GmbH" required />
+            </div>
+
+            <div class="form-group">
+              <label for="leadEmail">E-Mail *</label>
+              <input type="email" id="leadEmail" placeholder="kontakt@unternehmen.de" required />
+            </div>
+
+            <div class="form-group">
+              <label for="leadPhone">Telefon</label>
+              <input type="tel" id="leadPhone" placeholder="+49 123 456789" />
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Budget *</label>
+              <select id="budget" required>
+                <option value="">Budget auswählen</option>
+                <option value="500">bis 500 €</option>
+                <option value="1500">500 € – 1.500 €</option>
+                <option value="3000">1.500 € – 3.000 €</option>
+                <option value="7500">3.000 € – 7.500 €</option>
+                <option value="15000">über 7.500 €</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="interest">Interesse *</label>
+              <select id="interest" required>
+                <option value="">Interesse auswählen</option>
+                <option value="website">Website</option>
+                <option value="automation">KI & Automatisierung</option>
+                <option value="software">Softwareentwicklung</option>
+                <option value="consulting">IT-Beratung</option>
+                <option value="support">Hosting & Support</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="priority">Priorität *</label>
+              <select id="priority" required>
+                <option value="">Priorität auswählen</option>
+                <option value="hoch">Hoch</option>
+                <option value="mittel">Mittel</option>
+                <option value="niedrig">Niedrig</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="status">Status *</label>
+              <select id="status" required>
+                <option value="neu">Neu</option>
+                <option value="kontaktiert">Kontaktiert</option>
+                <option value="angebot">Angebot gesendet</option>
+                <option value="verhandlung">In Verhandlung</option>
+                <option value="gewonnen">Gewonnen</option>
+                <option value="verloren">Verloren</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notizen</label>
+            <textarea id="notes" placeholder="Kurze Notiz zum Lead oder Projektwunsch"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">
+              Lead speichern
+            </button>
+
+            <button type="button" class="btn secondary" id="resetDemoData">
+              Demo zurücksetzen
+            </button>
+          </div>
+        </form>
+
+        <aside class="lead-insights">
+          <p class="eyebrow">KI Lead Score</p>
+          <h3>Automatische Bewertung</h3>
+
+          <p>
+            Jeder Lead erhält automatisch einen Score basierend auf Budget,
+            Priorität, Interesse und Status. So wird sofort sichtbar, welche Kontakte
+            zuerst bearbeitet werden sollten.
+          </p>
+
+          <div class="score-example">
+            <div>
+              <strong>87</strong>
+              <span>/100</span>
+            </div>
+            <p>Hohe Abschlusswahrscheinlichkeit</p>
+          </div>
+
+          <ul class="check-list">
+            <li>Priorisierte Interessenten</li>
+            <li>Geschätztes Umsatzpotenzial</li>
+            <li>Automatische Vertriebsübersicht</li>
+            <li>Daten bleiben im Browser gespeichert</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="section-heading">
+        <p class="eyebrow">Lead Übersicht</p>
+        <h2>Aktuelle Leads</h2>
+        <p>
+          Alle Leads werden nach Score sortiert angezeigt. Statusänderungen und gelöschte Leads
+          werden automatisch im Browser gespeichert.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="lead-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Unternehmen</th>
+              <th>Interesse</th>
+              <th>Budget</th>
+              <th>Status</th>
+              <th>Priorität</th>
+              <th>Score</th>
+              <th>Aktion</th>
+            </tr>
+          </thead>
+
+          <tbody id="leadTableBody">
+            <tr class="empty-row">
+              <td colspan="8">Noch keine Leads vorhanden. Fügen Sie den ersten Lead hinzu.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading center">
+        <p class="eyebrow">Funktionen</p>
+        <h2>Was diese Demo zeigt</h2>
+        <p>
+          Dieses Projekt demonstriert eine moderne, interaktive Business-Anwendung
+          mit Dashboard, Formularlogik, persistenter Datenspeicherung und automatischer Bewertung.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span>👥</span>
+          <h3>Lead-Verwaltung</h3>
+          <p>
+            Neue Leads können direkt im Browser erstellt, angezeigt, gelöscht und verwaltet werden.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>⭐</span>
+          <h3>Automatisches Scoring</h3>
+          <p>
+            Jeder Lead erhält einen Score auf Basis von Budget, Status, Priorität und Interesse.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>📊</span>
+          <h3>Live Dashboard</h3>
+          <p>
+            Kennzahlen wie aktive Leads, gewonnene Leads und Umsatzpotenzial aktualisieren sich sofort.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>💾</span>
+          <h3>Lokale Speicherung</h3>
+          <p>
+            Erfasste Leads bleiben dank localStorage auch nach dem Neuladen der Seite erhalten.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>🔄</span>
+          <h3>Status Pipeline</h3>
+          <p>
+            Leads können zwischen Neu, Kontaktiert, Angebot, Verhandlung, Gewonnen und Verloren wechseln.
+          </p>
+        </article>
+
+        <article class="feature-card">
+          <span>💼</span>
+          <h3>SaaS Interface</h3>
+          <p>
+            Das Design orientiert sich an modernen CRM-, SaaS- und Vertriebsdashboards.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark" id="value">
+      <div class="section-heading center">
+        <p class="eyebrow">Geschäftlicher Nutzen</p>
+        <h2>Warum Unternehmen ein Lead Dashboard brauchen</h2>
+      </div>
+
+      <div class="value-grid">
+        <article class="value-card">
+          <strong>01</strong>
+          <h3>Bessere Übersicht</h3>
+          <p>
+            Alle Anfragen, Kontakte und Verkaufschancen werden an einem zentralen Ort sichtbar.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <strong>02</strong>
+          <h3>Schnellere Entscheidungen</h3>
+          <p>
+            Durch Score, Budget und Status erkennt das Team sofort, welche Leads Priorität haben.
+          </p>
+        </article>
+
+        <article class="value-card">
+          <strong>03</strong>
+          <h3>Mehr Struktur im Vertrieb</h3>
+          <p>
+            Der Vertriebsprozess wird messbarer, nachvollziehbarer und besser steuerbar.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div>
+        <p class="eyebrow">Portfolio-Projekt von Heaviside Solutions</p>
+        <h2>Sie möchten eine ähnliche Lösung für Ihr Unternehmen?</h2>
+        <p>
+          Dieses Projekt zeigt, wie individuelle Business-Software mit moderner Webtechnologie
+          umgesetzt werden kann – vom Lead Dashboard über CRM-Funktionen bis hin zu
+          Automatisierung und KI-gestützter Priorisierung.
+        </p>
+      </div>
+
+      <div class="hero-actions">
+        <a
+          href="https://heaviside-solutions.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn primary"
+        >
+          Heaviside Solutions besuchen
+        </a>
+
+        <a href="#leads" class="btn secondary">
+          Demo erneut testen
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <strong>KI Lead Manager</strong>
+      <p>Lead Management & Vertriebsdashboard Demo</p>
+    </div>
+
+    <div>
+      <p>Erstellt von Christopher Heaviside</p>
+      <p>Heaviside Solutions</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
